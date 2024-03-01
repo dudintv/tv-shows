@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
 import type { MenuItem } from '@/types';
+import { ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 import MenuLink from '@/components/nav/MenuLink.vue';
 import MenuIcon from '@/components/icons/MenuIcon.vue';
 import CloseIcon from '@/components/icons/CloseIcon.vue';
 import BrandingT from '@/components/icons/BrandingT.vue';
-import { onClickOutside } from '@vueuse/core';
 
 const menuRef = ref();
 const menuDialogRef = ref();
@@ -15,7 +15,10 @@ function toggleMenu() {
   menuDialogRef.value.open ? menuDialogRef.value.close() : menuDialogRef.value.show();
   isMenuOpen.value = menuDialogRef.value.open;
 }
-onClickOutside(menuRef, () => menuDialogRef.value.close());
+onClickOutside(menuRef, () => {
+  menuDialogRef.value.close();
+  isMenuOpen.value = false;
+});
 
 const menuItems: MenuItem[] = [
   {
@@ -82,20 +85,8 @@ const menuItems: MenuItem[] = [
 </template>
 
 <style lang="scss" scoped>
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(1rem);
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .menu-item-animation {
-  opacity: 0;
-  animation: slide-up 0.2s ease-in-out;
-  animation-fill-mode: forwards;
+  @apply opacity-0 animate-slide-up;
   animation-delay: calc(0.1s * var(--i));
 }
 </style>

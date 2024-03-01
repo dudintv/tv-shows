@@ -40,6 +40,30 @@ export default {
         '3xl': 'clamp(2.33rem, 2.08rem + 1.25vw, 3.05rem)',
         '4xl': 'clamp(2.80rem, 2.45rem + 1.77vw, 3.82rem)',
       },
+      keyframes: {
+        'slide-up': {
+          from: {
+            opacity: 0,
+            transform: 'translateY(1rem)',
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+        'slide-left': {
+          from: {
+            opacity: 0,
+            transform: 'translateX(1rem)',
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+      },
+      animation: {
+        'slide-up': 'slide-up 0.2s ease-in-out forwards',
+        'slide-left': 'slide-left 0.2s ease-in-out forwards',
+      },
     },
   },
   plugins: [],

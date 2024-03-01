@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TheMenu from '@/components/nav/TheMenu.vue';
 import LogoIcon from '@/components/icons/LogoIcon.vue';
-import SearchIcon from '@/components/icons/SearchIcon.vue';
+import TheSearch from '@/components/nav/TheSearch.vue';
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import SearchIcon from '@/components/icons/SearchIcon.vue';
     <router-link to="/">
       <LogoIcon />
     </router-link>
-    <SearchIcon />
+    <TheSearch />
   </nav>
 </template>
 
