@@ -1,8 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TheNavbar from '@/components/nav/TheNavbar.vue'
+</script>
 
 <template>
-  <div class="absolute top-0 w-full h-[30%] opacity-20 radial-gradient"></div>
-  <slot />
+  <div class="absolute top-0 w-full h-[30vh] opacity-20 radial-gradient pointer-events-none" />
+  <main class="md:container md:mx-auto px-2 xs:px-4 z-10">
+    <TheNavbar />
+    <slot />
+  </main>
 </template>
 
 <style lang="scss" scoped>
