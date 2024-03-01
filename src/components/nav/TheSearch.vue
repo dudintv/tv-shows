@@ -21,11 +21,21 @@ onClickOutside(searchRef, closeSearchDialog);
     <SearchIcon @click="toggleSearch" />
     <div
       v-if="isSearchOpen"
-      class="absolute top-0 bottom-0 right-0 flex items-end bg-accent px-8 opacity-0 animate-slide-left"
+      class="search-input-position search-input-animation flex items-end bg-accent px-8"
     >
       <SearchInput @close="closeSearchDialog" />
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.search-input {
+  &-position {
+    @apply w-[100vw] fixed top-0 right-0 h-20;
+    @apply sm:absolute sm:top-0 sm:bottom-0 sm:right-0 sm:w-auto;
+  }
+  &-animation {
+    @apply opacity-0 animate-slide-left;
+  }
+}
+</style>

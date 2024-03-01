@@ -1,6 +1,6 @@
 <template>
   <span
-    class="px-8 h-20 grid place-content-center cursor-pointer text-muted-white hover:text-accent transition-all"
+    class="px-2 h-20 grid place-content-center cursor-pointer text-muted-white hover:text-accent transition-all"
   >
     <svg
       width="190"
