@@ -46,38 +46,56 @@ const menuItems: MenuItem[] = [
         />
       </button>
     </div>
-    <dialog id="menu-dialog" ref="menuDialogRef" class="min-w-max bg-transparent mt-4">
+    <dialog id="menu-dialog" ref="menuDialogRef" class="md:min-w-max bg-transparent mt-4">
       <!-- the input only to avoid autofocus on the first element -->
       <input autofocus="true" class="opacity-0 absolute" />
-      <div class="flex flex-wrap items-stretch gap-4">
-        <MenuLink
-          v-for="menuItem in menuItems"
+      <ul class="flex flex-wrap items-stretch gap-4">
+        <li
+          v-for="(menuItem, index) in menuItems"
           :key="menuItem.link"
-          :to="menuItem.link"
-          :target="menuItem.target"
-          class="group"
+          class="menu-item-animation"
+          :style="{ '--i': index }"
         >
-          <div class="bg-accent px-8 pt-4 rounded-sm max-w-min h-full flex items-end">
-            <div class="relative">
-              <p
-                class="text-black/60 group-hover:text-black group-focus:text-black text-sm mt-8 mb-2 w-full transition-all"
-              >
-                {{ menuItem.description }}
-              </p>
-              <h5
-                class="font-display text-3xl whitespace-nowrap mb-8 translate-y-2 group-hover:translate-y-0 group-focus:translate-y-0 transition-all"
-              >
-                {{ menuItem.label }}
-              </h5>
-              <BrandingT
-                class="absolute b-0 -translate-y-full h-4 group-hover:h-8 group-focus:h-8 origin-bottom w-full transition-all"
-              />
+          <MenuLink v-if="isMenuOpen" :to="menuItem.link" :target="menuItem.target" class="group">
+            <div class="bg-accent px-8 pt-4 rounded-sm max-w-min h-full flex items-end">
+              <div class="relative">
+                <p
+                  class="text-black/60 group-hover:text-black group-focus:text-black text-sm mt-8 mb-2 w-full transition-all"
+                >
+                  {{ menuItem.description }}
+                </p>
+                <h5
+                  class="font-display text-3xl whitespace-nowrap mb-8 translate-y-2 group-hover:translate-y-0 group-focus:translate-y-0 transition-all"
+                >
+                  {{ menuItem.label }}
+                </h5>
+                <BrandingT
+                  class="absolute b-0 -translate-y-full h-4 group-hover:h-8 group-focus:h-8 origin-bottom w-full transition-all"
+                />
+              </div>
             </div>
-          </div>
-        </MenuLink>
-      </div>
+          </MenuLink>
+        </li>
+      </ul>
     </dialog>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-item-animation {
+  opacity: 0;
+  animation: slide-up 0.2s ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: calc(0.1s * var(--i));
+}
+</style>

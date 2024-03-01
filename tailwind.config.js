@@ -18,6 +18,7 @@ export default {
         background: '#20302E',
       },
       spacing: {
+        // "clamped" sizes are from https://utopia.fyi
         '3xs': 'clamp(0.31rem, 0.31rem + 0.00vw, 0.31rem)',
         '2xs': 'clamp(0.56rem, 0.54rem + 0.11vw, 0.63rem)',
         xs: 'clamp(0.88rem, 0.85rem + 0.11vw, 0.94rem)',

@@ -8,6 +8,7 @@ body {
 }
 
 a,
+li,
 button {
   @apply focus:outline outline-accent outline-4 outline-offset-2;
 }
