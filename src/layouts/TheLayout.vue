@@ -5,7 +5,7 @@ import TheNavbar from '@/components/nav/TheNavbar.vue';
 <template>
   <div class="absolute top-0 w-full h-[30vh] opacity-20 radial-gradient pointer-events-none" />
   <main class="md:container md:mx-auto px-2 xs:px-4 z-10">
-    <TheNavbar />
+    <TheNavbar class="mb-16" />
     <slot />
   </main>
 </template>

@@ -38,18 +38,15 @@ const menuItems: MenuItem[] = [
 
 <template>
   <div ref="menuRef" class="relative">
-    <div class="grid">
+    <div>
       <button v-if="isMenuOpen" @click="toggleMenu">
-        <CloseIcon class="row-span-full col-span-full bg-accent text-black" />
+        <CloseIcon class="bg-accent text-black" />
       </button>
       <button v-else @click="toggleMenu">
-        <MenuIcon
-          class="row-span-full col-span-full"
-          :class="{ 'bg-accent text-black': isMenuOpen }"
-        />
+        <MenuIcon :class="{ 'bg-accent text-black': isMenuOpen }" />
       </button>
     </div>
-    <dialog id="menu-dialog" ref="menuDialogRef" class="md:min-w-max bg-transparent mt-4">
+    <dialog id="menu-dialog" ref="menuDialogRef" class="md:min-w-max bg-transparent mt-4 z-50">
       <!-- the input only to avoid autofocus on the first element -->
       <input autofocus="true" class="opacity-0 absolute" />
       <ul class="flex flex-wrap items-stretch gap-4">
