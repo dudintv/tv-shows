@@ -22,16 +22,22 @@ const displayRating = computed(() => show.rating.average);
 
 <template>
   <div class="group text-muted-white w-fit">
-    <div class="grid">
-      <img
-        :src="displayCoverUrl"
-        :alt="displayName"
-        class="row-span-full col-span-full blur-lg group-hover:blur-xl opacity-30 group-hover:opacity-80 pointer-events-none transition-all"
-      />
-      <img :src="displayCoverUrl" :alt="displayName" class="row-span-full col-span-full z-10" />
-    </div>
     <router-link :to="`/shows/${show.id}`">
-      <h4 class="text-lg">{{ displayName }}</h4>
+      <div class="grid">
+        <img
+          :src="displayCoverUrl"
+          :alt="displayName"
+          class="row-span-full col-span-full blur-lg group-hover:blur-xl opacity-30 group-hover:opacity-80 pointer-events-none transition-all"
+        />
+        <img
+          :src="displayCoverUrl"
+          :alt="displayName"
+          class="row-span-full col-span-full z-10 group-hover:scale-105 transition-all"
+        />
+      </div>
+      <h4 class="text-lg mt-2 mb-1 opacity-70 group-hover:opacity-100 transition-all">
+        {{ displayName }}
+      </h4>
     </router-link>
     <div class="flex gap-1 text-xs">
       <span class="opacity-60">{{ displayYears }}&#8202;</span>
