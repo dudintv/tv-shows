@@ -41,6 +41,14 @@ export default {
         '4xl': 'clamp(2.80rem, 2.45rem + 1.77vw, 3.82rem)',
       },
       keyframes: {
+        'fade-in': {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
         'slide-up': {
           from: {
             opacity: 0,
@@ -61,6 +69,7 @@ export default {
         },
       },
       animation: {
+        'slow-fade-in': 'fade-in 1s linear forwards',
         'slide-up': 'slide-up 0.2s ease-in-out forwards',
         'slide-left': 'slide-left 0.2s ease-in-out forwards',
       },

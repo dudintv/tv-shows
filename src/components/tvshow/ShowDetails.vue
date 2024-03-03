@@ -27,14 +27,20 @@ const {
 </script>
 
 <template>
-  <img
-    :src="largeCoverUrl"
-    class="row-span-full col-span-full blur-3xl scale-110 opacity-60 mix-blend-lighten pointer-events-none fixed top-0 left-0"
-  />
-  <img
-    :src="largeCoverUrl"
-    class="row-span-full col-span-full blur-3xl scale-125 opacity-80 mix-blend-lighten pointer-events-none fixed top-0 right-0 translate-x-full"
-  />
+  <div class="row-span-full col-span-full animate-slow-fade-in">
+    <img
+      :src="largeCoverUrl"
+      class="blur-3xl opacity-30 scale-110 mix-blend-lighten pointer-events-none fixed top-0 left-0"
+    />
+  </div>
+  <div
+    class="row-span-full col-span-full animate-slow-fade-in delay-500 fixed top-0 right-0 translate-x-full"
+  >
+    <img
+      :src="largeCoverUrl"
+      class="row-span-full col-span-full blur-3xl scale-125 opacity-30 mix-blend-lighten pointer-events-none"
+    />
+  </div>
   <div
     class="grid sm:grid-flow-col auto-cols-[1fr] gap-6 md:gap-8 lg:gap-12 text-muted-white text-base"
   >
@@ -42,7 +48,7 @@ const {
       <img :src="largeCoverUrl" alt="displayName" class="row-span-full col-span-full z-10" />
     </div>
     <div class="z-10">
-      <div class="flex gap-2 text-base">
+      <div class="flex gap-2 text-base mb-4">
         <ChamferedChip class="bg-ternary px-1">{{ displayRuntime }}</ChamferedChip>
         <ChamferedChip class="bg-secondary gap-1 px-1">
           <StarIcon />

@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { Show } from '@/types';
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import GenreSection from '@/components/dashboard/GenreSection.vue';
 import { useFetchShows } from '@/composables/fetchShows';
 import { useQuery } from 'vue-query';
 
+const emit = defineEmits(['error']);
 const { fetchAllShows } = useFetchShows();
 const { data, isError, error, suspense } = useQuery(['shows'], fetchAllShows);
+watch(isError, () => emit('error', error));
 
 await suspense();
 

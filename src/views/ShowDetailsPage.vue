@@ -1,64 +1,23 @@
 <script setup lang="ts">
+import { watch } from 'vue';
+import { useRoute } from 'vue-router';
 import ShowDetails from '@/components/tvshow/ShowDetails.vue';
+import { useFetchShows } from '@/composables/fetchShows';
+import { useQuery } from 'vue-query';
 
-const show = {
-  id: 15,
-  url: 'https://www.tvmaze.com/shows/15/constantine',
-  name: 'Constantine',
-  type: 'Scripted',
-  language: 'English',
-  genres: ['Drama', 'Action', 'Horror'],
-  status: 'Ended',
-  runtime: 60,
-  averageRuntime: 60,
-  premiered: '2014-10-24',
-  ended: '2015-02-13',
-  officialSite: 'https://www.nbc.com/constantine',
-  schedule: {
-    time: '20:00',
-    days: ['Friday'],
-  },
-  rating: {
-    average: 7.5,
-  },
-  weight: 93,
-  network: {
-    id: 1,
-    name: 'NBC',
-    country: {
-      name: 'United States',
-      code: 'US',
-      timezone: 'America/New_York',
-    },
-    officialSite: 'https://www.nbc.com/',
-  },
-  webChannel: null,
-  dvdCountry: null,
-  externals: {
-    tvrage: 38109,
-    thetvdb: 273690,
-    imdb: 'tt3489184',
-  },
-  image: {
-    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/154.jpg',
-    original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/154.jpg',
-  },
-  summary:
-    "<p>Based on the wildly popular comic book series \"Hellblazer\" from DC Comics, seasoned demon hunter and master of the occult John Constantine is armed with a ferocious knowledge of the dark arts and a wickedly naughty wit. He fights the good fight - or at least he did. With his soul already damned to hell, he's decided to abandon his campaign against evil until a series of events thrusts him back into the fray, and he'll do whatever it takes to protect the innocent. With the balance of good and evil on the line‎, <b>Constantine </b>will use his skills to travel the country, find the supernatural terrors that threaten our world and send them back where they belong. After that, who knows... maybe there's hope for him and his soul after all.</p>",
-  updated: 1704793615,
-  _links: {
-    self: {
-      href: 'https://api.tvmaze.com/shows/15',
-    },
-    previousepisode: {
-      href: 'https://api.tvmaze.com/episodes/122719',
-    },
-  },
-};
+const emit = defineEmits(['error']);
+const route = useRoute();
+const { fetchOneShow } = useFetchShows();
+const { data, isError, error, suspense } = useQuery(['show', route.params.id], () =>
+  fetchOneShow(route.params.id),
+);
+watch(isError, () => emit('error', error));
+
+await suspense();
 </script>
 
 <template>
-  <ShowDetails :show="show" />
+  <ShowDetails :show="data" />
 </template>
 
 <style lang="scss" scoped></style>
