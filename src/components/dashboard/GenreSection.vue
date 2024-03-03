@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Show } from 'vue';
-import { ref, computed, onMounted, onUnmounted, defineProps } from 'vue';
+import { ref, computed, onMounted, onUnmounted, defineProps, nextTick } from 'vue';
 import GenreHeader from '@/components/dashboard/GenreHeader.vue';
 import ShowListItem from '@/components/tvshow/ShowListItem.vue';
 import ScrollerButton from '@/components/dashboard/ScrollerButton.vue';
@@ -10,6 +10,7 @@ const { genre, shows } = defineProps<{ genre: string; shows: Show[] }>();
 
 const scrollerRef = ref<HTMLElement>();
 const scrollProgress = ref(0);
+const hasScroll = ref(true);
 function scrollHandle() {
   if (!scrollerRef.value) {
     scrollProgress.value = 0;
@@ -20,15 +21,20 @@ function scrollHandle() {
       (scrollerRef.value.scrollWidth - scrollerRef.value.clientWidth)) *
     100;
 }
-onMounted(() => {
+onMounted(async () => {
   scrollerRef.value?.addEventListener('scroll', scrollHandle);
+  await nextTick();
+  if (!scrollerRef.value || +scrollerRef.value?.scrollWidth <= +scrollerRef.value?.clientWidth) {
+    scrollProgress.value = 0;
+    hasScroll.value = false;
+  }
 });
 onUnmounted(() => {
   scrollerRef.value?.removeEventListener('scroll', scrollHandle);
 });
 
-const hasLeftScrollButton = computed(() => scrollProgress.value > 1);
-const hasRightScrollButton = computed(() => scrollProgress.value < 99);
+const hasLeftScrollButton = computed(() => hasScroll.value && scrollProgress.value > 1);
+const hasRightScrollButton = computed(() => hasScroll.value && scrollProgress.value < 99);
 
 const itemsCount = computed(() => shows.length);
 
@@ -52,6 +58,7 @@ function stepRight() {
 
 <template>
   <GenreHeader :genre="genre" :itemsCount="itemsCount" :progress="scrollProgress" />
+  {{ hasScroll }}
   <div class="bleeding-full-width -mt-8">
     <div
       ref="scrollerRef"

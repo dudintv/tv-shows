@@ -42,9 +42,8 @@ const {
     />
   </div>
   <div
-    class="grid sm:grid-flow-col justify-start gap-6 md:gap-8 lg:gap-12 text-muted-white text-base"
+    class="grid sm:grid-flow-col auto-cols-[1fr] justify-start gap-6 md:gap-8 lg:gap-12 text-muted-white text-base"
   >
-    <!-- auto-cols-[1fr] -->
     <div class="grid">
       <img :src="largeCoverUrl" alt="displayName" class="row-span-full col-span-full z-10" />
     </div>

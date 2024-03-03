@@ -19,7 +19,7 @@ const {
 
 <template>
   <div class="grid sm:grid-flow-col justify-start gap-8 text-muted-white text-base">
-    <div class="grid">
+    <div v-if="displayCoverUrl" class="grid">
       <img
         :src="displayCoverUrl"
         class="row-span-full col-span-full blur-lg scale-110 opacity-20 mix-blend-lighten pointer-events-none"
