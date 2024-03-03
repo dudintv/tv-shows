@@ -9,7 +9,7 @@ const emit = defineEmits(['close']);
 const searchInput = ref('');
 function sendSearch() {
   emit('close');
-  router.push({ path: '/search', query: { q: searchInput.value } });
+  router.push({ path: '/search', query: { q: searchInput.value }, replace: true });
 }
 </script>
 

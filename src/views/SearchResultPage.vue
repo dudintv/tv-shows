@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { watch, defineEmits } from 'vue';
-import { useRoute } from 'vue-router';
+import { watch, computed, defineEmits } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import BrandingT from '@/components/icons/BrandingT.vue';
 import SearchItem from '@/components/tvshow/SearchItem.vue';
 import ShowsSeparator from '@/components/icons/ShowsSeparator.vue';
@@ -9,9 +9,15 @@ import { useQuery } from 'vue-query';
 
 const emit = defineEmits(['error']);
 const route = useRoute();
+const router = useRouter();
 const { searchShows } = useFetchShows();
-const { data, isError, error, suspense } = useQuery(['search', route.query.q], () =>
-  searchShows(route.query.q),
+const query = computed(() => route.query.q);
+watch(query, () => {
+  router.go(0);
+});
+
+const { data, isError, error, suspense } = useQuery(['search', query.value], () =>
+  searchShows(query.value),
 );
 watch(isError, () => emit('error', error));
 
@@ -20,7 +26,7 @@ await suspense();
 
 <template>
   <div class="mx-auto w-fit text-muted-white opacity-30">
-    <span class="text-sm w-full text-center">You're looking for: {{ route.query.q }}</span>
+    <span class="text-sm w-full text-center">You're looking for: {{ query }}</span>
   </div>
   <div class="mx-auto w-fit font-display text-accent text-2xl tracking-widest mb-16">
     <h1 v-if="!data.length">No results</h1>
