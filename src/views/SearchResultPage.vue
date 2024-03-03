@@ -20,7 +20,7 @@ await suspense();
 
 <template>
   <div class="mx-auto w-fit text-muted-white opacity-30">
-    <span class="text-base w-full text-center">You're looking for: {{ route.query.q }}</span>
+    <span class="text-sm w-full text-center">You're looking for: {{ route.query.q }}</span>
   </div>
   <div class="mx-auto w-fit font-display text-accent text-2xl tracking-widest mb-16">
     <h1 v-if="!data.length">No results</h1>
@@ -30,7 +30,6 @@ await suspense();
   </div>
   <ul class="flex flex-col gap-6">
     <li v-for="findResult in data" :key="findResult.show.id">
-      <!-- <pre class="text-white">{{ findResult.show }}</pre> -->
       <SearchItem :show="findResult.show" />
       <ShowsSeparator class="bg-accent mx-auto my-4" />
     </li>

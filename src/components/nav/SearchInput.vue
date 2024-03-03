@@ -21,8 +21,10 @@ function sendSearch() {
         type="input"
         name="search"
         id="search"
+        autofocus
         autocomplete="off"
         class="flex-grow bg-transparent"
+        @keyup.enter="sendSearch"
       />
       <button class="uppercase flex-grow-0 focus:font-bold" @click="sendSearch">Search</button>
       <button

@@ -58,7 +58,6 @@ function stepRight() {
 
 <template>
   <GenreHeader :genre="genre" :itemsCount="itemsCount" :progress="scrollProgress" />
-  {{ hasScroll }}
   <div class="bleeding-full-width -mt-8">
     <div
       ref="scrollerRef"
