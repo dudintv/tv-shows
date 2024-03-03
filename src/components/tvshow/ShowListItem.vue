@@ -33,8 +33,8 @@ const { displayName, displayCoverUrl, displayYears, displayRuntime, displayRatin
     </router-link>
     <div class="flex gap-1 text-xs">
       <span class="opacity-60">{{ displayYears }}&#8202;</span>
-      <ChamferedChip class="bg-ternary">{{ displayRuntime }}</ChamferedChip>
-      <ChamferedChip class="bg-secondary gap-1">
+      <ChamferedChip v-if="displayRuntime" class="bg-ternary">{{ displayRuntime }}</ChamferedChip>
+      <ChamferedChip v-if="displayRating" class="bg-secondary gap-1">
         <StarIcon />
         {{ displayRating }}
       </ChamferedChip>

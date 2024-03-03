@@ -42,15 +42,18 @@ const {
     />
   </div>
   <div
-    class="grid sm:grid-flow-col auto-cols-[1fr] gap-6 md:gap-8 lg:gap-12 text-muted-white text-base"
+    class="grid sm:grid-flow-col justify-start gap-6 md:gap-8 lg:gap-12 text-muted-white text-base"
   >
+    <!-- auto-cols-[1fr] -->
     <div class="grid">
       <img :src="largeCoverUrl" alt="displayName" class="row-span-full col-span-full z-10" />
     </div>
     <div class="z-10">
       <div class="flex gap-2 text-base mb-4">
-        <ChamferedChip class="bg-ternary px-1">{{ displayRuntime }}</ChamferedChip>
-        <ChamferedChip class="bg-secondary gap-1 px-1">
+        <ChamferedChip v-if="displayRuntime" class="bg-ternary px-1">
+          {{ displayRuntime }}
+        </ChamferedChip>
+        <ChamferedChip v-if="displayRating" class="bg-secondary gap-1 px-1">
           <StarIcon />
           {{ displayRating }}
         </ChamferedChip>
@@ -59,7 +62,7 @@ const {
 
       <div class="flex justify-between opacity-50 mb-8">
         <ul>
-          <li>Premiered: {{ displayPremiered }}</li>
+          <li v-if="displayPremiered">Premiered: {{ displayPremiered }}</li>
           <li v-if="displayEnded">Ended: {{ displayEnded }}</li>
         </ul>
         <span>{{ displayNetwork }}</span>
@@ -68,6 +71,7 @@ const {
       <p v-html="displayDescription"></p>
 
       <a
+        v-if="officialSiteUrl"
         :href="officialSiteUrl"
         class="flex gap-2 w-fit items-center my-6 opacity-80 text-primary hover:opacity-100 transition-all"
       >
@@ -75,12 +79,14 @@ const {
       </a>
 
       <div class="flex items-center gap-4">
-        <a :href="imdbLink" class="hover:scale-110 transition-all"><ImdbIcon /></a>
-        <a :href="tvdbLink" class="hover:scale-110 transition-all"><TvdbIcon /></a>
-        <a :href="tvrageLink" class="hover:scale-110 transition-all"><TvrageIcon /></a>
+        <a v-if="imdbLink" :href="imdbLink" class="hover:scale-110 transition-all"><ImdbIcon /></a>
+        <a v-if="tvdbLink" :href="tvdbLink" class="hover:scale-110 transition-all"><TvdbIcon /></a>
+        <a v-if="tvrageLink" :href="tvrageLink" class="hover:scale-110 transition-all"
+          ><TvrageIcon
+        /></a>
       </div>
 
-      <div class="my-4 flex flex-col gap-2">
+      <div v-if="show.genres?.length" class="my-4 flex flex-col gap-2">
         <h5>Genres</h5>
         <ul class="flex gap-1">
           <li v-for="genre in show.genres" :key="genre">

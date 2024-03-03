@@ -18,7 +18,7 @@ const {
 </script>
 
 <template>
-  <div class="grid sm:grid-flow-col gap-8 text-muted-white text-base">
+  <div class="grid sm:grid-flow-col justify-start gap-8 text-muted-white text-base">
     <div class="grid">
       <img
         :src="displayCoverUrl"
@@ -32,9 +32,11 @@ const {
       </router-link>
 
       <div class="flex gap-2 text-base my-4">
-        <span>{{ displayYears }}</span>
-        <ChamferedChip class="bg-ternary px-1">{{ displayRuntime }}</ChamferedChip>
-        <ChamferedChip class="bg-secondary gap-1 px-1">
+        <span v-if="displayYears">{{ displayYears }}</span>
+        <ChamferedChip v-if="displayRuntime" class="bg-ternary px-1">
+          {{ displayRuntime }}
+        </ChamferedChip>
+        <ChamferedChip v-if="displayRating" class="bg-secondary gap-1 px-1">
           <StarIcon />
           {{ displayRating }}
         </ChamferedChip>
@@ -42,7 +44,7 @@ const {
 
       <p v-html="displayDescription"></p>
 
-      <div class="my-4 flex gap-4">
+      <div v-if="show.genres?.length" class="my-4 flex gap-4">
         <h5>Genres</h5>
         <ul class="flex gap-1">
           <li v-for="genre in show.genres" :key="genre">

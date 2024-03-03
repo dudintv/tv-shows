@@ -18,9 +18,9 @@ async function fetchOneShow(showId: number): Promise<Show> {
 
 async function searchShows(query: string): Promise<Show[]> {
   const params = new URLSearchParams({ q: query });
-  const response = await fetch(`${searchUrl}` + params);
-  const show = await response.json();
-  return show;
+  const response = await fetch(`${searchUrl}?` + params);
+  const shows = await response.json();
+  return shows;
 }
 
 export function useFetchShows() {

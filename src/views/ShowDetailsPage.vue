@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch } from 'vue';
+import { watch, defineEmits } from 'vue';
 import { useRoute } from 'vue-router';
 import ShowDetails from '@/components/tvshow/ShowDetails.vue';
 import { useFetchShows } from '@/composables/fetchShows';
