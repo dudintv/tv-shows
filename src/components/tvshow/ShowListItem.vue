@@ -3,21 +3,11 @@ import { computed } from 'vue';
 import type { Show } from '@/types';
 import ChamferedChip from '@/components/tvshow/ChamferedChip.vue';
 import StarIcon from '@/components/icons/StarIcon.vue';
+import { useShow } from '@/composables/showDetails';
 
 const { show } = defineProps<{ show: Show }>();
 
-const hairSpace = ' ';
-const displayName = computed(() => show.name);
-const displayCoverUrl = computed(() => show.image.medium);
-const displayYears = computed(() => {
-  if (!show.ended) {
-    return `${show.premiered.substring(0, 4)}${hairSpace}—${hairSpace}...`;
-  }
-
-  return `${show.premiered.substring(0, 4)}${hairSpace}—${hairSpace}${show.ended.substring(0, 4)}`;
-});
-const displayRuntime = computed(() => `${show.runtime} min`);
-const displayRating = computed(() => show.rating.average);
+const { displayName, displayCoverUrl, displayYears, displayRuntime, displayRating } = useShow(show);
 </script>
 
 <template>
