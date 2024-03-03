@@ -18,7 +18,7 @@ const {
 </script>
 
 <template>
-  <div class="grid grid-flow-col gap-8 text-muted-white text-base">
+  <div class="grid sm:grid-flow-col gap-8 text-muted-white text-base">
     <div class="grid">
       <img
         :src="displayCoverUrl"

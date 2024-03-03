@@ -27,16 +27,22 @@ const {
 </script>
 
 <template>
-  <div class="grid grid-flow-col auto-cols-[1fr] gap-8 text-muted-white text-base">
+  <img
+    :src="largeCoverUrl"
+    class="row-span-full col-span-full blur-3xl scale-110 opacity-60 mix-blend-lighten pointer-events-none fixed top-0 left-0"
+  />
+  <img
+    :src="largeCoverUrl"
+    class="row-span-full col-span-full blur-3xl scale-125 opacity-80 mix-blend-lighten pointer-events-none fixed top-0 right-0 translate-x-full"
+  />
+  <div
+    class="grid sm:grid-flow-col auto-cols-[1fr] gap-6 md:gap-8 lg:gap-12 text-muted-white text-base"
+  >
     <div class="grid">
-      <img
-        :src="largeCoverUrl"
-        class="row-span-full col-span-full blur-3xl scale-125 opacity-80 mix-blend-lighten pointer-events-none"
-      />
       <img :src="largeCoverUrl" alt="displayName" class="row-span-full col-span-full z-10" />
     </div>
     <div class="z-10">
-      <div class="flex justify-between text-base">
+      <div class="flex gap-2 text-base">
         <ChamferedChip class="bg-ternary px-1">{{ displayRuntime }}</ChamferedChip>
         <ChamferedChip class="bg-secondary gap-1 px-1">
           <StarIcon />
@@ -57,7 +63,7 @@ const {
 
       <a
         :href="officialSiteUrl"
-        class="flex gap-2 w-fit items-center my-4 opacity-80 hover:text-primary hover:opacity-100 transition-all"
+        class="flex gap-2 w-fit items-center my-6 opacity-80 text-primary hover:opacity-100 transition-all"
       >
         <OriginIcon /> Official website
       </a>
@@ -78,10 +84,6 @@ const {
       </div>
     </div>
   </div>
-  <img
-    :src="largeCoverUrl"
-    class="row-span-full col-span-full blur-3xl scale-125 opacity-80 mix-blend-lighten pointer-events-none fixed top-0 right-0 translate-x-full"
-  />
 </template>
 
 <style lang="scss" scoped></style>
