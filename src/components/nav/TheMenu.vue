@@ -15,10 +15,11 @@ function toggleMenu() {
   menuDialogRef.value.open ? menuDialogRef.value.close() : menuDialogRef.value.show();
   isMenuOpen.value = menuDialogRef.value.open;
 }
-onClickOutside(menuRef, () => {
+function closeMenu() {
   menuDialogRef.value.close();
   isMenuOpen.value = false;
-});
+}
+onClickOutside(menuRef, closeMenu);
 
 const menuItems: MenuItem[] = [
   {
@@ -56,7 +57,13 @@ const menuItems: MenuItem[] = [
           class="menu-item-animation"
           :style="{ '--i': index }"
         >
-          <MenuLink v-if="isMenuOpen" :to="menuItem.link" :target="menuItem.target" class="group">
+          <MenuLink
+            v-if="isMenuOpen"
+            :to="menuItem.link"
+            :target="menuItem.target"
+            class="group"
+            @close="closeMenu"
+          >
             <div class="bg-accent px-8 pt-4 rounded-sm max-w-min h-full flex items-end">
               <div class="relative">
                 <p
