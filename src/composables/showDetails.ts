@@ -10,7 +10,7 @@ export function useShow(show: Show) {
   const displayName = show.name;
   const displayCoverUrl = show.image.medium;
   const largeCoverUrl = show.image.original;
-  const officialSiteUrl = show.network.officialSite;
+  const officialSiteUrl = show.network?.officialSite;
   const displayYears = computed(() => {
     if (!show.ended) {
       return `${show.premiered.substring(0, 4)}${hairSpace}—${hairSpace}...`;
@@ -22,7 +22,7 @@ export function useShow(show: Show) {
   const displayRating = show.rating.average;
   const displayPremiered = show.premiered;
   const displayEnded = show.ended || '';
-  const displayNetwork = `${show.network.name}, ${show.network.country.name}`;
+  const displayNetwork = `${show.network?.name}, ${show.network?.country?.name}`;
   const displayDescription = show.summary;
 
   const imdbLink = `${imdbBaseUrl}${show.externals.imdb}`;

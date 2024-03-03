@@ -13,7 +13,7 @@ const { displayName, displayCoverUrl, displayYears, displayRuntime, displayRatin
 <template>
   <div class="group text-muted-white w-fit">
     <router-link :to="`/shows/${show.id}`">
-      <div class="grid">
+      <div class="grid min-w-max mb-4">
         <img
           :src="displayCoverUrl"
           :alt="displayName"
@@ -25,7 +25,9 @@ const { displayName, displayCoverUrl, displayYears, displayRuntime, displayRatin
           class="row-span-full col-span-full z-10 group-hover:scale-105 transition-all"
         />
       </div>
-      <h4 class="text-lg mt-2 mb-1 opacity-70 group-hover:opacity-100 transition-all">
+      <h4
+        class="text-lg mb-2 w-full opacity-70 group-hover:opacity-100 transition-all text-pretty leading-7"
+      >
         {{ displayName }}
       </h4>
     </router-link>

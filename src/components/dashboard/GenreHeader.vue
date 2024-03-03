@@ -2,7 +2,7 @@
 import { ref, toRefs, watch, defineProps, onMounted } from 'vue';
 import BrandingT from '@/components/icons/BrandingT.vue';
 
-const props = defineProps<{ progress: number; itemsCount: number }>();
+const props = defineProps<{ genre: string; progress: number; itemsCount: number }>();
 const { progress, itemsCount } = toRefs(props);
 
 const progressRef = ref();
@@ -26,7 +26,7 @@ function handleProgress() {
 <template>
   <div class="text-muted-white w-full flex flex-col items-center">
     <small class="opacity-50">{{ itemsCount }}</small>
-    <h2 class="font-display text-3xl">Drama</h2>
+    <h2 class="font-display text-3xl">{{ genre }}</h2>
     <div ref="progressRef" class="w-[50%] relative">
       <div
         ref="progressBarRef"
