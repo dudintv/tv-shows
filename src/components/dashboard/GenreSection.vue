@@ -36,7 +36,7 @@ onUnmounted(() => {
 const hasLeftScrollButton = computed(() => hasScroll.value && scrollProgress.value > 1);
 const hasRightScrollButton = computed(() => hasScroll.value && scrollProgress.value < 99);
 
-const itemsCount = computed(() => shows.length);
+const showsCount = computed(() => shows.length);
 
 function scrollBy(step: number) {
   if (!scrollerRef.value) return;
@@ -57,7 +57,7 @@ function stepRight() {
 </script>
 
 <template>
-  <GenreHeader :genre="genre" :itemsCount="itemsCount" :progress="scrollProgress" />
+  <GenreHeader :genre="genre" :showsCount="showsCount" :progress="scrollProgress" />
   <div class="bleeding-full-width -mt-8">
     <div
       ref="scrollerRef"
