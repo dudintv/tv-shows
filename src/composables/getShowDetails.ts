@@ -9,8 +9,8 @@ export const tvrageBaseUrl = 'http://api.tvmaze.com/lookup/shows?tvrage=';
 export function useShow(show: Show) {
   const displayName = show.name;
   const displayCoverUrl = show.image?.medium || '';
-  const largeCoverUrl = show.image?.original;
-  const officialSiteUrl = show.network?.officialSite;
+  const largeCoverUrl = show.image?.original || '';
+  const officialSiteUrl = show.network?.officialSite || '';
   const displayYears = computed(() => {
     if (!show.premiered) {
       return '';
@@ -22,11 +22,13 @@ export function useShow(show: Show) {
     return `${show.premiered.substring(0, 4)}${hairSpace}—${hairSpace}${show.ended.substring(0, 4)}`;
   });
   const displayRuntime = show.runtime ? `${show.runtime} min` : '';
-  const displayRating = show.rating?.average;
+  const displayRating = show.rating?.average || '';
   const displayPremiered = show.premiered || '';
   const displayEnded = show.ended || '';
-  const displayNetwork = `${show.network?.name}, ${show.network?.country?.name}`;
-  const displaySummary = show.summary;
+  const displayNetwork = [show.network?.name, show.network?.country?.name]
+    .filter(Boolean)
+    .join(', ');
+  const displaySummary = show.summary || '';
 
   const imdbLink = show.externals?.imdb ? `${imdbBaseUrl}${show.externals.imdb}` : '';
   const tvdbLink = show.externals?.thetvdb ? `${tvdbBaseUrl}${show.externals.thetvdb}` : '';
