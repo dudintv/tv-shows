@@ -6,7 +6,11 @@ import ShowListItem from '@/components/tvshow/ShowListItem.vue';
 import ScrollerButton from '@/components/dashboard/ScrollerButton.vue';
 import ShowsSeparator from '@/components/icons/ShowsSeparator.vue';
 
-const { genre, shows } = defineProps<{ genre: string; shows: Show[] }>();
+const { genre, shows, maxShowsCount } = defineProps<{
+  genre: string;
+  shows: Show[];
+  maxShowsCount: number;
+}>();
 
 const scrollerRef = ref<HTMLElement>();
 const scrollProgress = ref(0);
@@ -33,8 +37,14 @@ onUnmounted(() => {
   scrollerRef.value?.removeEventListener('scroll', scrollHandle);
 });
 
-const hasLeftScrollButton = computed(() => hasScroll.value && scrollProgress.value > 1);
-const hasRightScrollButton = computed(() => hasScroll.value && scrollProgress.value < 99);
+const leftButtonVisibilityThreshold = 1;
+const rightButtonVisibilityThreshold = 99;
+const hasLeftScrollButton = computed(
+  () => hasScroll.value && scrollProgress.value > leftButtonVisibilityThreshold,
+);
+const hasRightScrollButton = computed(
+  () => hasScroll.value && scrollProgress.value < rightButtonVisibilityThreshold,
+);
 
 const showsCount = computed(() => shows.length);
 
@@ -46,18 +56,25 @@ function scrollBy(step: number) {
     behavior: 'smooth',
   });
 }
+
+const manualScrollStepMultiplier = 0.9;
 function stepLeft() {
   if (!scrollerRef.value?.clientWidth) return;
-  scrollBy(-scrollerRef.value.clientWidth * 0.9);
+  scrollBy(-scrollerRef.value.clientWidth * manualScrollStepMultiplier);
 }
 function stepRight() {
   if (!scrollerRef.value?.clientWidth) return;
-  scrollBy(scrollerRef.value.clientWidth * 0.9);
+  scrollBy(scrollerRef.value.clientWidth * manualScrollStepMultiplier);
 }
 </script>
 
 <template>
-  <GenreHeader :genre="genre" :showsCount="showsCount" :progress="scrollProgress" />
+  <GenreHeader
+    :genre="genre"
+    :showsCount="showsCount"
+    :progress="scrollProgress"
+    :maxShowsCount="maxShowsCount"
+  />
   <div class="bleeding-full-width -mt-8">
     <div
       ref="scrollerRef"
