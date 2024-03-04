@@ -2,9 +2,9 @@ import { computed } from 'vue';
 import type { Show } from '@/types';
 
 const hairSpace = ' ';
-const imdbBaseUrl = 'https://www.imdb.com/title/';
-const tvdbBaseUrl = '';
-const tvrageBaseUrl = '';
+export const imdbBaseUrl = 'https://www.imdb.com/title/';
+export const tvdbBaseUrl = 'https://www.thetvdb.com/dereferrer/series/';
+export const tvrageBaseUrl = 'http://api.tvmaze.com/lookup/shows?tvrage=';
 
 export function useShow(show: Show) {
   const displayName = show.name;
@@ -22,15 +22,15 @@ export function useShow(show: Show) {
     return `${show.premiered.substring(0, 4)}${hairSpace}—${hairSpace}${show.ended.substring(0, 4)}`;
   });
   const displayRuntime = show.runtime ? `${show.runtime} min` : '';
-  const displayRating = show.rating.average;
-  const displayPremiered = show.premiered;
+  const displayRating = show.rating?.average;
+  const displayPremiered = show.premiered || '';
   const displayEnded = show.ended || '';
   const displayNetwork = `${show.network?.name}, ${show.network?.country?.name}`;
-  const displayDescription = show.summary;
+  const displaySummary = show.summary;
 
-  const imdbLink = show.externals.imdb ? `${imdbBaseUrl}${show.externals.imdb}` : '';
-  const tvdbLink = show.externals.thetvdb ? `${tvdbBaseUrl}${show.externals.thetvdb}` : '';
-  const tvrageLink = show.externals.tvrage ? `${tvrageBaseUrl}${show.externals.tvrage}` : '';
+  const imdbLink = show.externals?.imdb ? `${imdbBaseUrl}${show.externals.imdb}` : '';
+  const tvdbLink = show.externals?.thetvdb ? `${tvdbBaseUrl}${show.externals.thetvdb}` : '';
+  const tvrageLink = show.externals?.tvrage ? `${tvrageBaseUrl}${show.externals.tvrage}` : '';
 
   return {
     displayName,
@@ -43,7 +43,7 @@ export function useShow(show: Show) {
     displayPremiered,
     displayEnded,
     displayNetwork,
-    displayDescription,
+    displaySummary,
     imdbLink,
     tvdbLink,
     tvrageLink,

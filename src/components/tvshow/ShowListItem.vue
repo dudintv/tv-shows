@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import type { Show } from '@/types';
 import ChamferedChip from '@/components/tvshow/ChamferedChip.vue';
 import StarIcon from '@/components/icons/StarIcon.vue';
-import { useShow } from '@/composables/showDetails';
+import { useShow } from '@/composables/getShowDetails';
 
 const { show } = defineProps<{ show: Show }>();
 

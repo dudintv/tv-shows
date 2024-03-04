@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Show } from '@/types';
-import { useShow } from '@/composables/showDetails';
+import { useShow } from '@/composables/getShowDetails';
 import OriginIcon from '@/components/icons/OriginIcon.vue';
 import StarIcon from '@/components/icons/StarIcon.vue';
 import ChamferedChip from '@/components/tvshow/ChamferedChip.vue';
@@ -13,7 +13,7 @@ const {
   displayRuntime,
   displayRating,
   displayYears,
-  displayDescription,
+  displaySummary,
 } = useShow(show);
 </script>
 
@@ -42,7 +42,7 @@ const {
         </ChamferedChip>
       </div>
 
-      <p v-html="displayDescription"></p>
+      <p v-html="displaySummary"></p>
 
       <div v-if="show.genres?.length" class="my-4 flex gap-4">
         <h5>Genres</h5>

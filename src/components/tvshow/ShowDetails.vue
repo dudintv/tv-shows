@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Show } from '@/types';
-import { useShow } from '@/composables/showDetails';
+import { useShow } from '@/composables/getShowDetails';
 import OriginIcon from '@/components/icons/OriginIcon.vue';
 import ImdbIcon from '@/components/icons/ImdbIcon.vue';
 import TvdbIcon from '@/components/icons/TvdbIcon.vue';
@@ -19,7 +19,7 @@ const {
   displayPremiered,
   displayEnded,
   displayNetwork,
-  displayDescription,
+  displaySummary,
   imdbLink,
   tvdbLink,
   tvrageLink,
@@ -67,7 +67,7 @@ const {
         <span>{{ displayNetwork }}</span>
       </div>
 
-      <p v-html="displayDescription"></p>
+      <p v-html="displaySummary"></p>
 
       <a
         v-if="officialSiteUrl"
