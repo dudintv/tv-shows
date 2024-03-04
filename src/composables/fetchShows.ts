@@ -23,10 +23,26 @@ async function searchShows(query: string): Promise<Show[]> {
   return shows;
 }
 
+function arrangeShowsByGenre(shows: Show[]) {
+  return shows.reduce((result: Record<string, Show[]>, show: Show) => {
+    if (!show.genres || (show.genres.length === 1 && !show.genres[0])) {
+      result.other?.push(show) || (result.other = [show]);
+      return result;
+    }
+
+    show.genres.forEach((genre: string) => {
+      const normalizedGenreName = genre.trim().toLowerCase();
+      result[normalizedGenreName]?.push(show) || (result[normalizedGenreName] = [show]);
+    });
+    return result;
+  }, {});
+}
+
 export function useFetchShows() {
   return {
     fetchAllShows,
     fetchOneShow,
     searchShows,
+    arrangeShowsByGenre,
   };
 }
