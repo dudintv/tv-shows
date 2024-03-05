@@ -1,4 +1,4 @@
-# tv-shows
+# "TV Shows" Vue.js app
 
 Top useful commands:
 ```sh
@@ -15,14 +15,16 @@ The app presents all TV shows from TV Maze open API database.
 
 My Figma file — https://www.figma.com/file/O0uj5ktsbWMS5foqTjqNd2/TV-Maze-for-ABN-AMRO?type=design&node-id=1%3A33&mode=design&t=ZgPT2S4ZWr2UnDdl-1
 
-I made a simple branding style based on the name of the project "TV Shows" and branding colors of TV Maze and ABN AMRO.
+(or see screenshots below)
+
+I made a simple branding style based on the name of the project **"TV Shows"** and branding colors relating to **TV Maze** and **ABN AMRO**.
 
 ![TV Shows colors](https://github.com/dudintv/tv-shows/raw/main/readme/colors.svg)
 
 ## Used stack
 
-* NODE: v20.10.0
-* NPM: v10.2.3
+* **NODE**: v20.10.0
+* **NPM**: v10.2.3
 * the latest **Vue.js** — because I like the new feature of Props deconstructing
 * **Vue Query** — because I would like to try to use it. There weren't so much reason to use it but I wanted to try. Anyway, it's the most correct and modern way to keep remote data. Especially when you need to dynamically update them (not the case).
 * **Pinia** — just to show that I'm working with it. I keep there only the data related to the running time. It's better to keep API data in Vue Query.
@@ -60,3 +62,9 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+# UI design
+
+![TV Shows — Main page](https://github.com/dudintv/tv-shows/raw/main/readme/main-page.png)
+![TV Shows — Show details page](https://github.com/dudintv/tv-shows/raw/main/readme/details-page.png)
+![TV Shows — Search result page](https://github.com/dudintv/tv-shows/raw/main/readme/search-page.png)
