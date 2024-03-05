@@ -80,7 +80,7 @@ describe('with correct show data', () => {
 });
 
 describe('minimal data', () => {
-  test('', () => {
+  test('has no displayable data', () => {
     const show = makeMinimalShow();
     const displayValues = useShow(show);
 

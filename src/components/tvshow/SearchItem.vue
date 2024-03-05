@@ -19,13 +19,23 @@ const {
 
 <template>
   <div class="grid sm:grid-flow-col justify-start gap-8 text-muted-white text-base">
-    <div v-if="displayCoverUrl" class="grid">
+    <router-link
+      v-if="displayCoverUrl"
+      v-slot="{ navigate }"
+      :to="`/shows/${show.id}`"
+      class="grid"
+    >
       <img
         :src="displayCoverUrl"
         class="row-span-full col-span-full blur-lg scale-110 opacity-20 mix-blend-lighten pointer-events-none"
       />
-      <img :src="displayCoverUrl" alt="displayName" class="row-span-full col-span-full z-10" />
-    </div>
+      <img
+        :src="displayCoverUrl"
+        alt="displayName"
+        class="row-span-full col-span-full z-10 hover:scale-105 transition-all"
+        @click="navigate"
+      />
+    </router-link>
     <div class="z-10">
       <router-link :to="`/shows/${show.id}`" class="block w-fit">
         <h2 class="font-display text-2xl hover:text-primary transition-all">{{ displayName }}</h2>
