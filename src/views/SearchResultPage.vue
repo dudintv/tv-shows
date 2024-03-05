@@ -31,8 +31,8 @@ await suspense();
     </div>
     <div class="mx-auto w-fit font-display text-accent text-2xl tracking-widest mb-16">
       <h1 v-if="!data.length">No results</h1>
-      <h1 v-if="data.length === 1">1 result</h1>
-      <h1 v-if="data.length">{{ data.length }} results</h1>
+      <h1 v-else-if="data.length === 1">1 result</h1>
+      <h1 v-else-if="data.length">{{ data.length }} results</h1>
       <BrandingT />
     </div>
     <ul class="flex flex-col gap-6">

@@ -4,6 +4,7 @@ import { useShow } from '@/composables/getShowDetails';
 import OriginIcon from '@/components/icons/OriginIcon.vue';
 import StarIcon from '@/components/icons/StarIcon.vue';
 import ChamferedChip from '@/components/tvshow/ChamferedChip.vue';
+import { useImage } from '@vueuse/core';
 
 const { show } = defineProps<{ show: Show }>();
 
@@ -15,6 +16,7 @@ const {
   displayYears,
   displaySummary,
 } = useShow(show);
+const { error } = useImage({ src: displayCoverUrl });
 </script>
 
 <template>
@@ -25,16 +27,24 @@ const {
       :to="`/shows/${show.id}`"
       class="grid"
     >
-      <img
-        :src="displayCoverUrl"
-        class="row-span-full col-span-full blur-lg scale-110 opacity-20 mix-blend-lighten pointer-events-none"
-      />
-      <img
-        :src="displayCoverUrl"
-        alt="displayName"
-        class="row-span-full col-span-full z-10 hover:scale-105 transition-all"
-        @click="navigate"
-      />
+      <div
+        v-if="error"
+        class="w-[210px] h-[295px] text-white/50 bg-ternary grid place-content-center"
+      >
+        can't load the cover
+      </div>
+      <template v-else>
+        <img
+          :src="displayCoverUrl"
+          class="row-span-full col-span-full blur-lg scale-110 opacity-20 mix-blend-lighten pointer-events-none"
+        />
+        <img
+          :src="displayCoverUrl"
+          alt="displayName"
+          class="row-span-full col-span-full z-10 hover:scale-105 transition-all"
+          @click="navigate"
+        />
+      </template>
     </router-link>
     <div class="z-10">
       <router-link :to="`/shows/${show.id}`" class="block w-fit">
