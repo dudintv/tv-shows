@@ -1,5 +1,7 @@
 # "TV Shows" Vue.js app
 
+The app presents all TV shows from the TV Maze open API database.
+
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/dudintv/tv-shows)
 
 *(unfortunately StackBlitz can't show cover images because TV Maze doesn't provide CORS records)*
@@ -12,8 +14,6 @@ npm install
 npm run dev
 npm run test:unit
 ```
-
-The app presents all TV shows from TV Maze open API database.
 
 ## Design
 
@@ -32,12 +32,12 @@ I made a simple branding style based on the name of the project **"TV Shows"** a
 * **Node.js**: v20.10.0
 * **NPM**: v10.2.3
 * the latest **Vue.js** — I like the (relatively) new feature of Props deconstructing with TS supporting ❤️
-* **Vue Query** — apparently, there weren't so much reason to use it but I wanted to try. But I believe it's the most correct and modern way to keep remote data. Especially when you need to dynamically update them (not the case).
-* **Pinia** —  I keep there only the common data related to the running time. It's better to keep API data in Vue Query.
-* **VueUse** — I think it's not smart to avoid the nice done solutions that are already auto-tested and test by community. And, to not re-invent wheels ;)
-* **Tailwind** — I'm a fan of this. Especially for quick prototyping and small projects. In other cases I prefer to combine this approach with any UI framework.
+* **Vue Query** — there weren't so many reasons to use it but I wanted to be prepared for further improvements. I believe it's the most correct and modern way to store remote data from API's.
+* **Pinia** —  I used Pinia to store common data related to the running time ("recently viewed shows"). API data should be stored in Vue Query.
+* **VueUse** — I think it's not smart to avoid the nicely done solutions that are already auto-tested and tested by the community. And, to not re-invent wheels ;)
+* **Tailwind** — I'm a fan of this. Especially for quick prototyping and small projects. In other cases, I prefer to combine this approach with any UI framework.
 * **Vite** and **Vitest** — just because they fast and reliable. No need to duplicate configs (DRY). Vitest is very similar to Jest.
-* **ESlint** and  **Prettier** — to keep the style across whole app and make auto-formatting that makes developing a bit faster and stressless.
+* **ESlint** and  **Prettier** — to keep the style across the whole app and make auto-formatting that makes developing a bit faster and stressless.
 
 ## Project Setup
 
