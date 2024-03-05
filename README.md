@@ -19,15 +19,15 @@ My Figma file — https://www.figma.com/file/O0uj5ktsbWMS5foqTjqNd2/TV-Maze-for-
 
 (or see screenshots below)
 
-I made a simple branding style based on the name of the project **"TV Shows"** and branding colors relating to **TV Maze** and **ABN AMRO**.
+I made a simple branding style based on the name of the project **"TV Shows"** and branding colors related   to **TV Maze** and **ABN AMRO**.
 
 ![TV Shows colors](https://github.com/dudintv/tv-shows/raw/main/readme/colors.svg)
 
 ## Used stack
 
-* **NODE**: v20.10.0
+* **Node.js**: v20.10.0
 * **NPM**: v10.2.3
-* the latest **Vue.js** — I like the new feature of Props deconstructing
+* the latest **Vue.js** — I like the (relatively) new feature of Props deconstructing with TS supporting ❤️
 * **Vue Query** — apparently, there weren't so much reason to use it but I wanted to try. But I believe it's the most correct and modern way to keep remote data. Especially when you need to dynamically update them (not the case).
 * **Pinia** —  I keep there only the common data related to the running time. It's better to keep API data in Vue Query.
 * **VueUse** — I think it's not smart to avoid the nice done solutions that are already auto-tested and test by community. And, to not re-invent wheels ;)
