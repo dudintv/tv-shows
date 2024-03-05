@@ -11,6 +11,7 @@ describe('GenreHeader', () => {
       props: {
         genre,
         showsCount,
+        maxShowsCount: 100,
         progress: 0,
       },
     });
@@ -26,6 +27,7 @@ describe('GenreHeader', () => {
         props: {
           genre,
           showsCount,
+          maxShowsCount: 100,
           progress: 0,
         },
       });
