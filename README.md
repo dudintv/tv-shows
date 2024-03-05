@@ -11,13 +11,13 @@ The app presents all TV shows from TV Maze open API database.
 
 ## Design
 
-![TV Shows logo](https://github.com/dudintv/tv-shows/raw/master/readme/logo.svg)
+![TV Shows logo](https://github.com/dudintv/tv-shows/raw/main/readme/logo.svg)
 
 My Figma file — https://www.figma.com/file/O0uj5ktsbWMS5foqTjqNd2/TV-Maze-for-ABN-AMRO?type=design&node-id=1%3A33&mode=design&t=ZgPT2S4ZWr2UnDdl-1
 
 I made a simple branding style based on the name of the project "TV Shows" and branding colors of TV Maze and ABN AMRO.
 
-![TV Shows colors](https://github.com/dudintv/tv-shows/raw/master/readme/colors.svg)
+![TV Shows colors](https://github.com/dudintv/tv-shows/raw/main/readme/colors.svg)
 
 ## Used stack
 
