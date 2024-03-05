@@ -7,6 +7,7 @@ import TvdbIcon from '@/components/icons/TvdbIcon.vue';
 import TvrageIcon from '@/components/icons/TvrageIcon.vue';
 import StarIcon from '@/components/icons/StarIcon.vue';
 import ChamferedChip from '@/components/tvshow/ChamferedChip.vue';
+import { useImage } from '@vueuse/core';
 
 const { show } = defineProps<{ show: Show }>();
 
@@ -24,10 +25,11 @@ const {
   tvdbLink,
   tvrageLink,
 } = useShow(show);
+const { error } = useImage({ src: largeCoverUrl });
 </script>
 
 <template>
-  <div class="row-span-full col-span-full animate-slow-fade-in">
+  <div v-if="!error" class="row-span-full col-span-full animate-slow-fade-in">
     <img
       :src="largeCoverUrl"
       class="blur-3xl opacity-30 scale-110 mix-blend-lighten pointer-events-none fixed top-0 left-0"
@@ -36,7 +38,14 @@ const {
   <div
     class="row-span-full col-span-full animate-slow-fade-in delay-500 fixed top-0 right-0 translate-x-full"
   >
+    <div
+      v-if="error"
+      class="w-[470px] h-[630px] text-white/50 bg-ternary grid place-content-center"
+    >
+      can't load the cover
+    </div>
     <img
+      v-else
       :src="largeCoverUrl"
       class="row-span-full col-span-full blur-3xl scale-125 opacity-30 mix-blend-lighten pointer-events-none"
     />
@@ -44,7 +53,7 @@ const {
   <div
     class="grid sm:grid-flow-col auto-cols-[1fr] justify-start gap-6 md:gap-8 lg:gap-12 text-muted-white text-base"
   >
-    <div class="grid">
+    <div v-if="!error" class="grid">
       <img :src="largeCoverUrl" alt="displayName" class="row-span-full col-span-full z-10" />
     </div>
     <div class="z-10">

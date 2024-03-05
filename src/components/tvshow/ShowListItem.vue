@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import type { Show } from '@/types';
 import ChamferedChip from '@/components/tvshow/ChamferedChip.vue';
 import StarIcon from '@/components/icons/StarIcon.vue';
@@ -14,7 +13,6 @@ const { error } = useImage({ src: displayCoverUrl });
 
 <template>
   <div class="group text-muted-white w-fit">
-    <pre>{{ error }}</pre>
     <router-link :to="`/shows/${show.id}`">
       <div
         v-if="error"
