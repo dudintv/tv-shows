@@ -15,9 +15,8 @@ function onError(error: any) {
   <TheLayout>
     <router-view v-slot="{ Component }">
       <suspense timeout="0">
-        <template #default>
-          <component :is="Component" :key="$route.path" @error="onError" />
-        </template>
+        <component :is="Component" :key="$route.path" @error="onError" />
+
         <template #fallback>
           <div class="w-full grid place-content-center">
             <div class="font-display text-muted-white text-2xl">Loading...</div>

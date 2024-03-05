@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, toRefs, watch, defineProps, onMounted } from 'vue';
+import { ref, toRefs, watch, onMounted } from 'vue';
 import BrandingT from '@/components/icons/BrandingT.vue';
 
 const props = defineProps<{

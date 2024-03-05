@@ -4,16 +4,25 @@ import type { Show } from '@/types';
 import ChamferedChip from '@/components/tvshow/ChamferedChip.vue';
 import StarIcon from '@/components/icons/StarIcon.vue';
 import { useShow } from '@/composables/getShowDetails';
+import { useImage } from '@vueuse/core';
 
 const { show } = defineProps<{ show: Show }>();
 
 const { displayName, displayCoverUrl, displayYears, displayRuntime, displayRating } = useShow(show);
+const { error } = useImage({ src: displayCoverUrl });
 </script>
 
 <template>
   <div class="group text-muted-white w-fit">
+    <pre>{{ error }}</pre>
     <router-link :to="`/shows/${show.id}`">
-      <div class="grid min-w-max mb-4">
+      <div
+        v-if="error"
+        class="w-[210px] h-[295px] text-white/50 bg-ternary grid place-content-center"
+      >
+        can't load the cover
+      </div>
+      <div v-else class="grid min-w-max mb-4">
         <img
           :src="displayCoverUrl"
           :alt="displayName"

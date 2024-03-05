@@ -18,7 +18,6 @@ export const useShowsStore = defineStore('shows', {
         this.recentlyViewedShows.splice(foundShowIndex, 1);
       }
 
-      console.log('show =', show); // eslint-disable-line no-console
       this.recentlyViewedShows.unshift(structuredClone(toRaw(show)));
     },
   },

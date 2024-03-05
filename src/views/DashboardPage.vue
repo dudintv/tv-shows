@@ -12,20 +12,22 @@ function onError(error: any) {
 </script>
 
 <template>
-  <RecentlyViewedShows />
+  <div>
+    <RecentlyViewedShows />
 
-  <suspense timeout="0">
-    <GenresList @error="onError" />
+    <suspense timeout="0">
+      <GenresList @error="onError" />
 
-    <template #fallback>
-      <div class="w-full grid place-content-center">
-        <div class="font-display text-muted-white text-2xl">Loading...</div>
-      </div>
-    </template>
-  </suspense>
+      <template #fallback>
+        <div class="w-full grid place-content-center">
+          <div class="font-display text-muted-white text-2xl">Loading...</div>
+        </div>
+      </template>
+    </suspense>
 
-  <div v-if="hasError" class="text-accent grid place-content-center">
-    {{ errorMessage }}
+    <div v-if="hasError" class="text-accent grid place-content-center">
+      {{ errorMessage }}
+    </div>
   </div>
 </template>
 

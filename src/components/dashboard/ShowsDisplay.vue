@@ -1,15 +1,6 @@
 <script setup lang="ts">
 import type { Show } from 'vue';
-import {
-  ref,
-  computed,
-  watch,
-  onMounted,
-  onUnmounted,
-  defineProps,
-  defineEmits,
-  nextTick,
-} from 'vue';
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue';
 import ShowListItem from '@/components/tvshow/ShowListItem.vue';
 import ScrollerButton from '@/components/dashboard/ScrollerButton.vue';
 

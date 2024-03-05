@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Show } from 'vue';
-import { ref, computed, defineProps } from 'vue';
+import { ref, computed } from 'vue';
 import GenreHeader from '@/components/dashboard/GenreHeader.vue';
 import ShowsSeparator from '@/components/icons/ShowsSeparator.vue';
 import ShowsDisplay from '@/components/dashboard/ShowsDisplay.vue';
