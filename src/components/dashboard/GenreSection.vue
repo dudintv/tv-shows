@@ -78,7 +78,8 @@ function stepRight() {
   <div class="bleeding-full-width -mt-8">
     <div
       ref="scrollerRef"
-      class="scroll-container px-8 sm:px-12 md:px-16 py-16 grid grid-flow-col justify-start gap-8"
+      class="scroll-container px-8 sm:px-12 md:px-16 py-16 grid grid-flow-col gap-8"
+      :class="hasScroll ? 'justify-start' : 'justify-center'"
     >
       <ShowListItem :show="show" v-for="show in shows" :key="show.id" class="flex-shrink-0" />
     </div>
