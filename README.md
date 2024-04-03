@@ -4,7 +4,7 @@ The app presents all TV shows from the TV Maze open API database.
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/dudintv/tv-shows)
 
-*(unfortunately StackBlitz can't show cover images because TV Maze doesn't provide CORS records)*
+*(StackBlitz may not show cover images because TV Maze doesn't provide CORS records)*
 
 Top useful commands:
 ```sh
